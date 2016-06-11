@@ -26,23 +26,23 @@ def FCFS(filaProcessos):
     #Ordena a fila de processos baseado no tempo de chegada
     filaProcessos.sort(key=lambda x: x.tempoChegada)
 
-    #corre a fila de processos j· ordenada
+    #corre a fila de processos j√° ordenada
     for p in range(0,len(filaProcessos)):
 
-        #loop para executar o processo durante o tempo de execuÁ„o
+        #loop para executar o processo durante o tempo de execu√ß√£o
         while(filaProcessos[p].tempoExecucao>0):
 
-            #verifica se algum processo j· chegou no tempo atual
+            #verifica se algum processo j√° chegou no tempo atual
             if(filaProcessos[p].tempoChegada > tempoAtual):
-                # se n„o tiver chegado ele executa tempo ocioso
+                # se n√£o tiver chegado ele executa tempo ocioso
                 time.sleep(1)
                 print "tempo ocioso"
                 tempoOcioso+=1
                 tempoAtual+=1   
 
                 #cria um 'processo ocioso" para imprimir na tabela final
-                #se for o primeiro processo o tempo de chegada È 0
-                #se n„o o tempo inicial È o final do ˙ltimo processo
+                #se for o primeiro processo o tempo de chegada √© 0
+                #se n√£o o tempo inicial √© o final do √∫ltimo processo
                 if(p==0):
                     ocioso=processo("tempo ocioso",0,0)
                     ocioso.tempoInicio=ocioso.tempoChegada
@@ -52,14 +52,14 @@ def FCFS(filaProcessos):
                     ocioso.tempoInicio=ocioso.tempoChegada
                     ocioso.tempoFinal=tempoAtual
 
-                #se a duraÁ„o do tempo ocioso È maior que È 1
-                #tira o ˙ltimo objeto 'tempo ocioso' da lista e o substitui
-                #pelo com o tempo de duraÁ„o certa. 
+                #se a dura√ß√£o do tempo ocioso √© maior que √© 1
+                #tira o √∫ltimo objeto 'tempo ocioso' da lista e o substitui
+                #pelo com o tempo de dura√ß√£o certa. 
                 if(tempoOcioso>1):
                     listaOcioso.pop()
                     listaPosicao.pop()
 
-                #adiciona o objeto de 'tempo ocioso' na lista e a sua posiÁ„o    
+                #adiciona o objeto de 'tempo ocioso' na lista e a sua posi√ß√£o    
                 listaOcioso.append(ocioso)
                 listaPosicao.append(p)
 
@@ -70,23 +70,23 @@ def FCFS(filaProcessos):
                 print filaProcessos[p].executar()
                 tempoAtual+=1
 
-                #se for o primeiro processo o tempo inicial È o tempo de chegada
-                #+ o tempo ocioso anterior (caso n tenha somar· 0)
+                #se for o primeiro processo o tempo inicial √© o tempo de chegada
+                #+ o tempo ocioso anterior (caso n tenha somar√° 0)
                 if(p==0):
                         filaProcessos[p].tempoInicio = filaProcessos[p].tempoChegada+tempoOcioso
                         tempoOcioso=0
 
-                #se n„o for o primeiro processo o tempo incial È o tempo final
+                #se n√£o for o primeiro processo o tempo incial √© o tempo final
                 #do processo anterior + o tempo ocioso do anterior
                 else:
 
                     #so atualiza o tempo de inicio se o tempo que estiver for menor que
-                    #o tempo final do anterior, se for maior È pq j· foi atualizado.
+                    #o tempo final do anterior, se for maior √© pq j√° foi atualizado.
                     if(filaProcessos[p].tempoInicio<filaProcessos[p-1].tempoFinal):
                         filaProcessos[p].tempoInicio = filaProcessos[p-1].tempoFinal+tempoOcioso
                         tempoOcioso=0
 
-                # o tempo final sempre È igual ao tempo atual
+                # o tempo final sempre √© igual ao tempo atual
                 filaProcessos[p].tempoFinal = tempoAtual
 
     #coloca os "processos ociosos" na lista para imprimir a tabela
@@ -116,7 +116,7 @@ def FCFS(filaProcessos):
         somatorio+=tempoEspera
         c+=1
     
-    print "tempo de espera mÈdio: %f"%(float(somatorio)/float(c))
+    print "tempo de espera m√©dio: %f"%(float(somatorio)/float(c))
                                         
     
             
