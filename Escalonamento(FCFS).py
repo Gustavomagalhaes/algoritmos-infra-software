@@ -34,15 +34,15 @@ def FCFS(filaProcessos):
     #Ordena a fila de processos baseado no tempo de chegada
     filaProcessos.sort(key=lambda x: x.tempoChegada)
 
-    #corre a fila de processos j· ordenada
+    #corre a fila de processos j√° ordenada
     for p in range(0,len(filaProcessos)):
 
-        #loop para executar o processo durante o tempo de execuÁ„o
+        #loop para executar o processo durante o tempo de execu√ß√£o
         while(filaProcessos[p].tempoExecucao>0):
 
-            #verifica se algum processo j· chegou no tempo atual
+            #verifica se algum processo j√° chegou no tempo atual
             if(filaProcessos[p].tempoChegada > tempoAtual):
-                # se n„o tiver chegado ele executa tempo ocioso
+                # se n√£o tiver chegado ele executa tempo ocioso
                 time.sleep(1)
                 global cont
                 if (cont <= 9):
@@ -53,8 +53,13 @@ def FCFS(filaProcessos):
                 tempoAtual+=1   
 
                 #cria um 'processo ocioso" para imprimir na tabela final
+<<<<<<< HEAD
                 #se for o primeiro processo o tempo de chegada È 0
                 #se n„o o tempo inicial È o final do ˙ltimo processo
+=======
+                #se for o primeiro processo o tempo de chegada √© 0
+                #se n√£o o tempo inicial √© o final do √∫ltimo processo
+>>>>>>> origin/master
                 if(p==0):
                     ocioso=processo("Tempo Ocioso",0,0)
                     ocioso.tempoInicio=ocioso.tempoChegada
@@ -64,14 +69,24 @@ def FCFS(filaProcessos):
                     ocioso.tempoInicio=ocioso.tempoChegada
                     ocioso.tempoFinal=tempoAtual
 
+<<<<<<< HEAD
                 #se a duraÁ„o do tempo ocioso È maior que È 1
                 #tira o ˙ltimo objeto 'tempo ocioso' da lista e o substitui
                 #pelo com o tempo de duraÁ„o certa. 
+=======
+                #se a dura√ß√£o do tempo ocioso √© maior que √© 1
+                #tira o √∫ltimo objeto 'tempo ocioso' da lista e o substitui
+                #pelo com o tempo de dura√ß√£o certa. 
+>>>>>>> origin/master
                 if(tempoOcioso>1):
                     listaOcioso.pop()
                     listaPosicao.pop()
 
+<<<<<<< HEAD
                 #adiciona o objeto de 'tempo ocioso' na lista e a sua posiÁ„o    
+=======
+                #adiciona o objeto de 'tempo ocioso' na lista e a sua posi√ß√£o    
+>>>>>>> origin/master
                 listaOcioso.append(ocioso)
                 listaPosicao.append(p)
 
@@ -82,27 +97,46 @@ def FCFS(filaProcessos):
                 print filaProcessos[p].executar()
                 tempoAtual+=1
 
+<<<<<<< HEAD
                 #se for o primeiro processo o tempo inicial È o tempo de chegada
                 #+ o tempo ocioso anterior (caso n tenha somar· 0)
+=======
+                #se for o primeiro processo o tempo inicial √© o tempo de chegada
+                #+ o tempo ocioso anterior (caso n tenha somar√° 0)
+>>>>>>> origin/master
                 if(p==0):
                         filaProcessos[p].tempoInicio = filaProcessos[p].tempoChegada+tempoOcioso
                         tempoOcioso=0
 
+<<<<<<< HEAD
                 #se n„o for o primeiro processo o tempo incial È o tempo final
+=======
+                #se n√£o for o primeiro processo o tempo incial √© o tempo final
+>>>>>>> origin/master
                 #do processo anterior + o tempo ocioso do anterior
                 else:
 
                     #so atualiza o tempo de inicio se o tempo que estiver for menor que
+<<<<<<< HEAD
                     #o tempo final do anterior, se for maior È pq j· foi atualizado.
+=======
+                    #o tempo final do anterior, se for maior √© pq j√° foi atualizado.
+>>>>>>> origin/master
                     if(filaProcessos[p].tempoInicio<filaProcessos[p-1].tempoFinal):
                         filaProcessos[p].tempoInicio = filaProcessos[p-1].tempoFinal+tempoOcioso
                         tempoOcioso=0
 
+<<<<<<< HEAD
                 # o tempo final sempre È igual ao tempo atual
                 filaProcessos[p].tempoFinal = tempoAtual
 
             cont+=1
 
+=======
+                # o tempo final sempre √© igual ao tempo atual
+                filaProcessos[p].tempoFinal = tempoAtual
+
+>>>>>>> origin/master
     #coloca os "processos ociosos" na lista para imprimir a tabela
     c=0
     for p in range(0,len(listaOcioso)):
@@ -113,6 +147,7 @@ def FCFS(filaProcessos):
     print ""
     print("Intervalo de Tempo entre os Processos\n")
     for p in range(0,len(filaProcessos)):
+<<<<<<< HEAD
         if(filaProcessos[p].tempoInicio <= 9 and filaProcessos[p].tempoFinal <= 9):
             print "0%d - %s - 0%d"%(filaProcessos[p].tempoInicio, filaProcessos[p].nome,filaProcessos[p].tempoFinal)
         elif(filaProcessos[p].tempoInicio <= 9):
@@ -124,6 +159,11 @@ def FCFS(filaProcessos):
 
     print("")
             
+=======
+        print "%d %s %d"%(filaProcessos[p].tempoInicio,
+                          filaProcessos[p].nome,filaProcessos[p].tempoFinal)
+    print
+>>>>>>> origin/master
 
     #tira os processos ociosos da lista para fazer o calculo do tempo de espera
     for p in range(0,len(listaOcioso)):
@@ -139,6 +179,7 @@ def FCFS(filaProcessos):
         somatorio+=tempoEspera
         c+=1
     
+<<<<<<< HEAD
     print "\nTempo de Espera MÈdio: %.2f"%(float(somatorio)/float(c))
                                         
 qtdProcessos = input("Digite a quantidade de processos desejados: ")
@@ -148,5 +189,16 @@ for p in range(1, qtdProcessos+1):
     proc = raw_input("Processo "+str(p)+": ")
     proc = proc.split(" ")
     filaProcessos.append(processo(("Processo "+str(p)),int(proc[0]),int(proc[1])))
+=======
+    print "tempo de espera m√©dio: %f"%(float(somatorio)/float(c))
+                                        
+    
+            
+
+filaProcessos = [processo("processo 1",8,2),processo("processo 2",4,10)
+                 ,processo("processo 3",9,11),processo("processo 4",5,25)
+                 ,processo("processo 5",10,25),processo("processo 6",14,26)]
+
+>>>>>>> origin/master
 
 FCFS(filaProcessos)
