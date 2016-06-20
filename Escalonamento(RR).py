@@ -71,7 +71,7 @@ def RR(filaProcessos):
         somatorio+=tempoEspera
         tempoEspera=0
 
-    print "Tempo de espera médio: %f"%(float(somatorio)/quantidadeProcessos)
+    print "Tempo de espera mÃ©dio: %f"%(float(somatorio)/quantidadeProcessos)
 
                   
 
